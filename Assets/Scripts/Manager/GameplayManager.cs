@@ -12,9 +12,6 @@ public class GameplayManager : Singleton<GameplayManager>
 
     [SerializeField] List<Transform> listSpawnPosition;
 
-    Vector3 spawnPosition;
-
-
     public void SpawnUnits(int unitCount)
     {
         for (int i = 0; i < unitCount; i++)
@@ -26,6 +23,7 @@ public class GameplayManager : Singleton<GameplayManager>
     private IEnumerator Spawn(float delay)
     {
         Spider spiderObj = PoolObjects.Ins.Spawn(spiderPrefab, GenerateSpawnPosition());
+        spiderObj.defaultPosition = GenerateSpawnPosition();
         yield return new WaitForSeconds(delay);
     }
 
