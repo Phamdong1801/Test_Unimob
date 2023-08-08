@@ -6,12 +6,17 @@ using UnityEngine.UI;
 public class FpsLogger : MonoBehaviour
 {
     [SerializeField] bool showFps;
+
     [SerializeField] Text fpsText;
+
     [SerializeField] Color goodFpsColor = new Color(0f, 1, 0f);
+
     [SerializeField] Color badFpsColor = new Color(1, 0, 0);
+
     [SerializeField] int goodFps = 55;
 
     int fpsCount = 0;
+
     float nextTime = 0;
     // Start is called before the first frame update
     void Start()

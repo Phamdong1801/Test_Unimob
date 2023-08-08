@@ -8,22 +8,24 @@ public class GameplayManager : Singleton<GameplayManager>
 
     [SerializeField] GameObject goalObject;
 
-    public GameObject GoalObject => goalObject;
-
     [SerializeField] List<Transform> listSpawnPosition;
 
     public void SpawnUnits(int unitCount)
     {
-        for (int i = 0; i < unitCount; i++)
-        {
-            StartCoroutine(Spawn(1f));
-        }
+        StartCoroutine(IESpanwn(unitCount));
     }
 
+    IEnumerator IESpanwn(int unitCount)
+    {
+        for (int i = 0; i < unitCount; i++)
+        {
+            yield return Spawn(0.05f);
+        }
+    }
     private IEnumerator Spawn(float delay)
     {
         Spider spiderObj = PoolObjects.Ins.Spawn(spiderPrefab, GenerateSpawnPosition());
-        spiderObj.defaultPosition = GenerateSpawnPosition();
+        spiderObj.SetDefaulPosition(GenerateSpawnPosition());
         yield return new WaitForSeconds(delay);
     }
 

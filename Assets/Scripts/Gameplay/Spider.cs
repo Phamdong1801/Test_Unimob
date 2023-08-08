@@ -9,7 +9,7 @@ public class Spider : RecylableObject
 
     [SerializeField] float speedSpiderMove = 3f;
 
-    public Vector3 defaultPosition;
+    private Vector3 defaultPosition;
 
     const string tagGoal = "Goal";
 
@@ -27,6 +27,11 @@ public class Spider : RecylableObject
         transform.position = defaultPosition;
         agent.speed = 0;
         agent.enabled = false;
+    }
+
+    public void SetDefaulPosition(Vector3 defaultPos)
+    {
+        defaultPosition = defaultPos;
     }
 
     public override void OnSpawn()
